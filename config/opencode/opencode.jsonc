@@ -1,0 +1,21 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  // The /org team (agents, command, team-bus plugin) lives in agents/, commands/ and plugins/ in this directory.
+  "experimental": {
+    "subagent_depth": 2,
+  },
+  "mcp": {
+    "servers": {
+      // Disabled by default until you supply your own personal GitHub token.
+      // Set GITHUB_TOKEN as a user environment variable, then set "disabled" to false (or remove it) to enable.
+      "github": {
+        "type": "remote",
+        "url": "https://api.githubcopilot.com/mcp",
+        "headers": {
+          "Authorization": "Bearer {env:GITHUB_TOKEN}",
+        },
+        "disabled": true,
+      },
+    },
+  },
+}

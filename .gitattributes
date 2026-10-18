@@ -1,0 +1,4 @@
+# Keep bytes exactly as committed on every platform. Git never converts line endings
+# (no CRLF<->LF, no core.autocrlf effect), so MANIFEST.sha256.json hashes stay stable on
+# a fresh Windows clone regardless of the local core.autocrlf setting.
+* -text

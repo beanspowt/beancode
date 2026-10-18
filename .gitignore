@@ -1,0 +1,33 @@
+# Secrets, auth, environment files: never commit.
+service.json
+.env
+.env.*
+auth.json
+auth-*.json
+auth_*.json
+*.token
+
+# Backups, logs and local state.
+*.bak
+*.backup
+*.bak-*
+*.log
+.local/
+.opencode/
+*.db
+*.sqlite*
+node_modules/
+
+# Windows shell metadata.
+Thumbs.db
+desktop.ini
+
+# Private research notes (top-level payload folder only).
+/config/opencode/research/
+
+# Dependency manifests MUST stay tracked (needed for -InstallNpm / npm ci).
+# Explicit negations so no rule above can hide them.
+!package.json
+!package-lock.json
+!**/package.json
+!**/package-lock.json
