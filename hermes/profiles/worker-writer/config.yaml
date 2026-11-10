@@ -1,0 +1,20 @@
+model:
+  default: claude-haiku-5.5
+  provider: copilot
+  base_url: https://api.githubcopilot.com
+agent:
+  reasoning_effort: medium
+  disabled_toolsets:
+    - browser
+    - computer_use
+    - cronjob
+    - delegation
+    - discord
+    - discord_admin
+    - image_gen
+    - stt
+    - tts
+    - video
+    - video_gen
+    - x_search
+    - yuanbao

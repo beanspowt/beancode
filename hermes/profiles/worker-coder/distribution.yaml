@@ -1,0 +1,5 @@
+name: worker-coder
+version: 1.0.0
+description: "Implements one narrowly scoped coding, data or ML task and edits only files inside its assigned scope."
+hermes_requires: ">=0.22.0"
+author: beancode

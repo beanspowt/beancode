@@ -1,0 +1,5 @@
+name: worker-research
+version: 1.0.0
+description: "Performs one read-only investigation (code search, docs, literature and database lookup, web) and reports an answer with sources."
+hermes_requires: ">=0.22.0"
+author: beancode

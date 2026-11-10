@@ -1,0 +1,5 @@
+name: director
+version: 1.0.0
+description: "Director of the /org team. Turns a goal into workstreams for the managers, arbitrates, orders the final audit and reports back. Start work with /org <task>."
+hermes_requires: ">=0.22.0"
+author: beancode

@@ -1,0 +1,5 @@
+name: auditor
+version: 1.0.0
+description: "Independent final auditor of the /org team. Reviews finished work against the original goal, read-only, and returns APPROVE or REJECT with findings."
+hermes_requires: ">=0.22.0"
+author: beancode

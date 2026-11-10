@@ -1,0 +1,5 @@
+name: manager-impl
+version: 1.0.0
+description: "Manager of the implementation workstream. Splits work into disjoint-scope cards for worker-coder, worker-science and worker-writer, confirms the result with worker-qa, and reports to the director."
+hermes_requires: ">=0.22.0"
+author: beancode

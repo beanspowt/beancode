@@ -1,0 +1,5 @@
+name: manager-quality
+version: 1.0.0
+description: "Manager of the quality workstream. Directs worker-coder (test files only) and worker-qa to write and run tests, lint, type checks and builds, and reviews changes for correctness."
+hermes_requires: ">=0.22.0"
+author: beancode

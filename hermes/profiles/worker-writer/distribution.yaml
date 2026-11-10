@@ -1,0 +1,5 @@
+name: worker-writer
+version: 1.0.0
+description: "Produces one document deliverable (manuscript, report, slides, poster, figure, diagram or research note). Never invents facts or references."
+hermes_requires: ">=0.22.0"
+author: beancode

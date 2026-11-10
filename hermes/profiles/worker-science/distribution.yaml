@@ -1,0 +1,5 @@
+name: worker-science
+version: 1.0.0
+description: "Implements one narrowly scoped science task: bioinformatics, omics, biomedical imaging and clinical-research data, or chemistry, materials, physics, quantum computing and simulation."
+hermes_requires: ">=0.22.0"
+author: beancode

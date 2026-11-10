@@ -1,0 +1,5 @@
+name: worker-qa
+version: 1.0.0
+description: "Runs tests, linters, type checks and builds and reports exact commands and output. Does not modify files."
+hermes_requires: ">=0.22.0"
+author: beancode

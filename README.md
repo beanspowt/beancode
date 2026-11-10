@@ -8,11 +8,38 @@ install it into your OpenCode configuration directory.
 The repository is private and owned by the GitHub account `beanspowt`. Cloning requires
 GitHub authentication with read access (see [Prerequisites](#prerequisites)).
 
+## Install /org in Hermes
+
+The `/org` team also installs into [Hermes Agent](https://hermes-agent.nousresearch.com/docs) as
+ten Bots (Hermes profiles) that work together on the Hermes Kanban board. Paste this into Hermes
+(Hermes Desktop, main chat) on the PC where Hermes runs:
+
+> Install /org from https://github.com/beanspowt/beancode
+
+**Hermes: follow these steps.** Run the commands in PowerShell. Step 3 takes a few minutes: run it
+as a background process and wait for it to finish.
+
+1. Get the repository into `%USERPROFILE%\beancode`. If that folder exists, run
+   `git -C "$env:USERPROFILE\beancode" pull --ff-only`; otherwise run
+   `git clone https://github.com/beanspowt/beancode.git "$env:USERPROFILE\beancode"`.
+   If git reports an authentication error, ask the user to run `gh auth login` first.
+2. Preview, changing nothing:
+   `powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\beancode\scripts\Install-BeanCodeHermes.ps1" -DryRun`.
+   Show the plan to the user and ask for approval. If it reports a `CONFLICT`, ask whether to
+   replace those profiles; if yes, add `-Force` in step 3.
+3. After approval, run the same command without `-DryRun`.
+4. Report the `Checks` section and the last line of the output. Then tell the user: open the
+   **Bots** tab, open **Director**, and send `/org <task>`.
+
+The same steps update an installed team ("Update /org from https://github.com/beanspowt/beancode").
+Details, the bots, and exit codes: [docs/HERMES.md](docs/HERMES.md).
+
 | Document | Contents |
 |---|---|
 | [docs/INSTALLER.md](docs/INSTALLER.md) | Installer and verifier parameters, behavior, and exit codes |
 | [docs/INVENTORY.md](docs/INVENTORY.md) | Payload contents and counts |
 | [docs/SANITIZATION.md](docs/SANITIZATION.md) | What was removed or changed, and the content checks |
+| [docs/HERMES.md](docs/HERMES.md) | The `/org` team as Hermes bots: install, bots, skills, scripts |
 
 ## Layout
 
@@ -34,11 +61,20 @@ beancode\
 │  ├─ AGENTS.md                    global instructions
 │  ├─ package.json
 │  └─ package-lock.json            lock file used by the optional -InstallNpm step
+├─ hermes\                         the /org team as Hermes bots (see docs\HERMES.md)
+│  ├─ roster.json                  one entry per bot: source agents, model, toolsets
+│  ├─ souls\                       each bot's Hermes instructions
+│  ├─ extra-skills\org\            the /org command as a Hermes skill
+│  └─ profiles\                    generated Hermes profile distributions (do not edit)
 ├─ scripts\
 │  ├─ Install-BeanCode.ps1         installs the payload
 │  ├─ Verify-BeanCode.ps1          verifies the payload (and optionally an installed copy)
 │  ├─ New-Manifest.ps1             regenerates MANIFEST.sha256.json
-│  └─ BeanCode.Common.ps1          shared helper, dot-sourced by the three scripts
+│  ├─ BeanCode.Common.ps1          shared helper, dot-sourced by the scripts
+│  ├─ Build-BeanCodeHermes.ps1     regenerates hermes\profiles
+│  ├─ Verify-BeanCodeHermes.ps1    verifies hermes\ (skill coverage, build, content checks)
+│  ├─ Install-BeanCodeHermes.ps1   installs the /org team into Hermes
+│  └─ BeanCode.Hermes.ps1          Hermes helper, dot-sourced by the three Hermes scripts
 └─ docs\
 ```
 

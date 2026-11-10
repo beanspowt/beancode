@@ -1,0 +1,22 @@
+model:
+  default: gpt-6.1-sol
+  provider: copilot
+  base_url: https://api.githubcopilot.com
+agent:
+  reasoning_effort: max
+  disabled_toolsets:
+    - browser
+    - code_execution
+    - computer_use
+    - cronjob
+    - delegation
+    - discord
+    - discord_admin
+    - image_gen
+    - stt
+    - terminal
+    - tts
+    - video
+    - video_gen
+    - x_search
+    - yuanbao

@@ -1,0 +1,131 @@
+{
+  "schema": 1,
+  "version": "1.0.0",
+  "hermesRequires": ">=0.22.0",
+  "provider": "copilot",
+  "baseUrl": "https://api.githubcopilot.com",
+  "orgCommand": "commands/org.md",
+  "bundledSkills": ["hermes-agent", "sdlc-review"],
+  "openCodeOnlySkills": {
+    "opencode": "OpenCode built-in skill about OpenCode itself. Replaced by the Hermes bundled skill hermes-agent.",
+    "report": "OpenCode built-in skill for filing OpenCode bug reports. No Hermes equivalent."
+  },
+  "commonDisabledToolsets": [
+    "browser",
+    "computer_use",
+    "cronjob",
+    "delegation",
+    "discord",
+    "discord_admin",
+    "image_gen",
+    "stt",
+    "tts",
+    "video",
+    "video_gen",
+    "x_search",
+    "yuanbao"
+  ],
+  "roles": [
+    {
+      "name": "director",
+      "sources": ["director"],
+      "cardProtocol": false,
+      "model": "gpt-6.1-sol",
+      "reasoning": "max",
+      "description": "Director of the /org team. Turns a goal into workstreams for the managers, arbitrates, orders the final audit and reports back. Start work with /org <task>.",
+      "disabledToolsets": ["code_execution", "terminal"],
+      "enableToolsets": ["kanban"],
+      "extraSkills": ["org"]
+    },
+    {
+      "name": "manager-impl",
+      "sources": ["manager-impl"],
+      "model": "claude-sonnet-5.5",
+      "reasoning": "high",
+      "description": "Manager of the implementation workstream. Splits work into disjoint-scope cards for worker-coder, worker-science and worker-writer, confirms the result with worker-qa, and reports to the director.",
+      "disabledToolsets": ["code_execution"],
+      "enableToolsets": [],
+      "extraSkills": []
+    },
+    {
+      "name": "manager-quality",
+      "sources": ["manager-quality"],
+      "model": "claude-sonnet-5.5",
+      "reasoning": "high",
+      "description": "Manager of the quality workstream. Directs worker-coder (test files only) and worker-qa to write and run tests, lint, type checks and builds, and reviews changes for correctness.",
+      "disabledToolsets": ["code_execution"],
+      "enableToolsets": [],
+      "extraSkills": []
+    },
+    {
+      "name": "manager-research",
+      "sources": ["manager-research"],
+      "model": "claude-sonnet-5.5",
+      "reasoning": "high",
+      "description": "Manager of the research workstream. Splits questions into independent read-only investigations for worker-research, cross-checks the answers and delivers an evidenced findings report.",
+      "disabledToolsets": ["code_execution"],
+      "enableToolsets": [],
+      "extraSkills": []
+    },
+    {
+      "name": "auditor",
+      "sources": ["auditor"],
+      "model": "claude-opus-5.5",
+      "reasoning": "high",
+      "description": "Independent final auditor of the /org team. Reviews finished work against the original goal, read-only, and returns APPROVE or REJECT with findings.",
+      "disabledToolsets": ["code_execution"],
+      "enableToolsets": [],
+      "extraSkills": []
+    },
+    {
+      "name": "worker-coder",
+      "sources": ["worker-coder"],
+      "model": "claude-haiku-5.5",
+      "reasoning": "medium",
+      "description": "Implements one narrowly scoped coding, data or ML task and edits only files inside its assigned scope.",
+      "disabledToolsets": [],
+      "enableToolsets": [],
+      "extraSkills": []
+    },
+    {
+      "name": "worker-qa",
+      "sources": ["worker-qa"],
+      "model": "claude-haiku-5.5",
+      "reasoning": "medium",
+      "description": "Runs tests, linters, type checks and builds and reports exact commands and output. Does not modify files.",
+      "disabledToolsets": ["code_execution"],
+      "enableToolsets": [],
+      "extraSkills": []
+    },
+    {
+      "name": "worker-research",
+      "sources": ["worker-research"],
+      "model": "claude-haiku-5.5",
+      "reasoning": "medium",
+      "description": "Performs one read-only investigation (code search, docs, literature and database lookup, web) and reports an answer with sources.",
+      "disabledToolsets": ["code_execution"],
+      "enableToolsets": [],
+      "extraSkills": []
+    },
+    {
+      "name": "worker-writer",
+      "sources": ["worker-writer"],
+      "model": "claude-haiku-5.5",
+      "reasoning": "medium",
+      "description": "Produces one document deliverable (manuscript, report, slides, poster, figure, diagram or research note). Never invents facts or references.",
+      "disabledToolsets": [],
+      "enableToolsets": [],
+      "extraSkills": []
+    },
+    {
+      "name": "worker-science",
+      "sources": ["worker-bio", "worker-chem"],
+      "model": "claude-haiku-5.5",
+      "reasoning": "medium",
+      "description": "Implements one narrowly scoped science task: bioinformatics, omics, biomedical imaging and clinical-research data, or chemistry, materials, physics, quantum computing and simulation.",
+      "disabledToolsets": [],
+      "enableToolsets": [],
+      "extraSkills": []
+    }
+  ]
+}

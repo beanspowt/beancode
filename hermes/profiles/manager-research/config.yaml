@@ -1,0 +1,21 @@
+model:
+  default: claude-sonnet-5.5
+  provider: copilot
+  base_url: https://api.githubcopilot.com
+agent:
+  reasoning_effort: high
+  disabled_toolsets:
+    - browser
+    - code_execution
+    - computer_use
+    - cronjob
+    - delegation
+    - discord
+    - discord_admin
+    - image_gen
+    - stt
+    - tts
+    - video
+    - video_gen
+    - x_search
+    - yuanbao

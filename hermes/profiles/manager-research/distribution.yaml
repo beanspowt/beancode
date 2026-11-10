@@ -1,0 +1,5 @@
+name: manager-research
+version: 1.0.0
+description: "Manager of the research workstream. Splits questions into independent read-only investigations for worker-research, cross-checks the answers and delivers an evidenced findings report."
+hermes_requires: ">=0.22.0"
+author: beancode
